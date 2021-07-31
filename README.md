@@ -7,7 +7,7 @@
 ```bash
 aws cloudformation create-stack --stack-name sgpvpc --template-body file://vpc.yaml --parameters ParameterKey='VPCCIDR',ParameterValue='192.168.0.0/16' ParameterKey='PublicSubnet1CIDR',ParameterValue='192.168.1.0/24' ParameterKey='PublicSubnet2CIDR',ParameterValue='192.168.2.0/24' ParameterKey='PublicSubnet3CIDR',ParameterValue='192.168.3.0/24' ParameterKey='RegionCode',ParameterValue='sgp' ParameterKey='AZ1Code',ParameterValue='sgpaz1' ParameterKey='AZ2Code',ParameterValue='sgpaz2' ParameterKey='AZ3Code',ParameterValue='sgpaz3'
 ```
-## 2. Create security group with necesory permissions ( ssh, https , http )
+## 2. Create security group with necessary permissions ( ssh, https , http )
 - [vpc-securitygroup.yaml](./Templates/vpc-securitygroup.yaml)
 
 ```bash
@@ -36,13 +36,17 @@ aws cloudformation create-stack --stack-name sgpalb --template-body file://alb.y
 ```
 Test Result: 
 ```
- while sleep 0.9; do curl -k "Application-Load-Balancer-392717069.ap-southeast-1.elb.amazonaws.com"; done
-<html><h1 align='center'><p style='color:blue'>Hello World !!!!! Greenting freom Cloudideastar - app v1</p></h1></html>
-<html><h1 align='center'><p style='color:green'>Hello World !!!!! Greenting freom Cloudideastar - app v2</p></h1></html>
-<html><h1 align='center'><p style='color:green'>Hello World !!!!! Greenting freom Cloudideastar - app v2</p></h1></html>
-<html><h1 align='center'><p style='color:blue'>Hello World !!!!! Greenting freom Cloudideastar - app v1</p></h1></html>
-<html><h1 align='center'><p style='color:green'>Hello World !!!!! Greenting freom Cloudideastar - app v2</p></h1></html>
-<html><h1 align='center'><p style='color:blue'>Hello World !!!!! Greenting freom Cloudideastar - app v1</p></h1></html>
-<html><h1 align='center'><p style='color:blue'>Hello World !!!!! Greenting freom Cloudideastar - app v1</p></h1></html>
+➜  ~ while sleep 1; do curl -k "http://Application-Load-Balancer-491965461.ap-southeast-1.elb.amazonaws.com"; done
+<html><h1 align='center'><p style='color:green'>p h y o w w . github . io - app v2</p></h1></html>
+<html><h1 align='center'><p style='color:blue'>p h y o w w . g i t h u b . io - app v1</p></h1></html>
+<html><h1 align='center'><p style='color:green'>p h y o w w . github . io - app v2</p></h1></html>
+<html><h1 align='center'><p style='color:blue'>p h y o w w . g i t h u b . io - app v1</p></h1></html>
+<html><h1 align='center'><p style='color:blue'>p h y o w w . g i t h u b . io - app v1</p></h1></html>
+<html><h1 align='center'><p style='color:green'>p h y o w w . github . io - app v2</p></h1></html>
+<html><h1 align='center'><p style='color:green'>p h y o w w . github . io - app v2</p></h1></html>
+<html><h1 align='center'><p style='color:blue'>p h y o w w . g i t h u b . io - app v1</p></h1></html>
+<html><h1 align='center'><p style='color:green'>p h y o w w . github . io - app v2</p></h1></html>
+<html><h1 align='center'><p style='color:blue'>p h y o w w . g i t h u b . io - app v1</p></h1></html>
+<html><h1 align='center'><p style='color:blue'>p h y o w w . g i t h u b . io - app v1</p></h1></html>
 ```
 
